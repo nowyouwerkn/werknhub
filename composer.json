@@ -3,7 +3,7 @@
     "description": "Hub to integrate multiple Werkn sub-products or main functionalities.",
     "keywords": [
         "werkn",
-        "laravel",
+        "laravel"
     ],
     "type": "library",
     "version": "1.0.0",
