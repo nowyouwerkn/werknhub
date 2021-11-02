@@ -16,7 +16,15 @@ class WerknHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Nowyouwerkn\WerknHub\Controllers\WerknHubController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\DashboardController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\ExtensionController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\IntegrationController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\LegalTextController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\NotificationController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\SEOController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\SiteConfigController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\SiteThemeController');
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\UserController');
     }
 
     /**
@@ -38,6 +46,11 @@ class WerknHubServiceProvider extends ServiceProvider
             __DIR__.'/resources/lang' => resource_path('lang/'),
         ], 'translations');
 
+        // Publica vistas de errores
+        $this->publishes([
+            __DIR__.'/resources/views/errors' => resource_path('views/errors'),
+        ], 'error-views');
+
         // Publicar Assets de Estilos
         $this->publishes([
             __DIR__.'/assets' => public_path(''),
@@ -49,6 +62,7 @@ class WerknHubServiceProvider extends ServiceProvider
         ], 'config_files');
 
         // Publicar archivos de base de datos
+        /*
         $this->publishes([
             __DIR__.'/database/migrations' => database_path('migrations/'),
         ], 'migration_files');
@@ -56,5 +70,6 @@ class WerknHubServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/seeders' => database_path('seeders/'),
         ], 'seeder_files');
+        */
     }
 }

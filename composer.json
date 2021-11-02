@@ -1,6 +1,6 @@
 {
     "name": "nowyouwerkn/werknhub",
-    "description": "Hub to integrate multiple Werkn sub-products or main functionalities.",
+    "description": "Hub to integrate multiple Werkn sub-products and manage extensions.",
     "keywords": [
         "werkn",
         "laravel"
@@ -12,13 +12,7 @@
             "name": "Jorge Peña Lama",
             "email": "jorge.pena@werkn.mx",
             "homepage" : "https://werkn.mx",
-            "role": "Project Manager"
-        },
-        {
-            "name": "Itzell Elizondo",
-            "email": "itzell@werkn.mx",
-            "homepage" : "https://werkn.mx",
-            "role": "Designer"
+            "role": "Developer"
         }
     ],
     "homepage": "https://github.com/nowyouwerkn/werknhub",
@@ -27,7 +21,12 @@
     "prefer-stable": true,
     "require":{
         "php": "^8.0",
-        "laravel/framework": "^8.12"
+        "laravel/framework": "^8.12",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/fortify": "^1.7",
+        "mews/purifier": "^3.3",
+        "spatie/laravel-permission": "^4.2",
+        "stevebauman/location": "^6.1"
     },
     "require-dev": {
     },
