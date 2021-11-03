@@ -22,7 +22,6 @@
     "require":{
         "php": "^8.0",
         "laravel/framework": "^8.12",
-        "guzzlehttp/guzzle": "^7.0.1",
         "laravel/fortify": "^1.7",
         "mews/purifier": "^3.3",
         "spatie/laravel-permission": "^4.2",

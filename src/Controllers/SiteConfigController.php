@@ -42,19 +42,19 @@ class SiteConfigController extends Controller
     {
         //Validation
         $this -> validate($request, array(
-            'store_name' => 'required|max:255',
+            'site_name' => 'required|max:255',
         ));
 
         $config = SiteConfig::create([
-            'store_name' => $request->store_name,
+            'site_name' => $request->site_name,
             'contact_email' => $request->contact_email,
             'sender_email' => $request->sender_email,
-            'store_industry' => $request->store_industry,
+            'site_industry' => $request->site_industry,
             'currency_id' => $request->currency_id
         ]);
 
         $seo = SEO::create([
-            'page_title' => $request->store_name
+            'page_title' => $request->site_name
         ]);
 
         //Session message

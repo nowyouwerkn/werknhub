@@ -1,4 +1,4 @@
-@extends('wecommerce::back.layouts.config')
+@extends('werknhub::back.layouts.config')
 
 @section('title')
     <div class="d-sm-flex align-items-center justify-content-between mg-lg-b-30">
@@ -43,12 +43,12 @@
     <div class="row row-xs">
         <div class="col-md-6">
             <div class="card card-body mb-2">
-                <h4>Bienvenido a tu Plataforma de E-Commerce</h4>
+                <h4>Bienvenido a tu Plataforma Autoadministrable</h4>
                 <p>Necesitamos unos datos para comenzar a configurar tu sistema.</p>
 
                 <div class="form-group">
                     <label for="name">Nombre de tu Tienda <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="store_name" value="Tienda de {{ $user->name ?? 'Usuario' }}" required="" placeholder="Tienda de Werkn" />
+                    <input type="text" class="form-control" name="site_name" value="Página de {{ $user->name ?? 'Usuario' }}" required="" placeholder="Página de {{ $user->name ?? 'Usuario' }}" />
                 </div>
                 <hr>
                 <h6 class="text-uppercase mb-3">Información de contacto</h6>
@@ -68,21 +68,6 @@
                             <small>Tus clientes verán esta dirección si les envías un correo electrónico.</small>
                         </div>
                     </div>
-                </div>
-
-                <hr>
-                <h6 class="text-uppercase">Moneda de la Tienda</h6>
-                @php
-                    $currencies = \Nowyouwerkn\WeCommerce\Models\Currency::all();
-                @endphp
-                <div class="form-group">
-                    <select class="form-control" name="currency_id" required="">
-                        @foreach($currencies as $currency)
-                        <option value="{{ $currency->id }}">({{ $currency->code }}) {{ $currency->name }}</option>
-                        @endforeach
-                    </select>
-
-                    <small>Esta es la moneda en la que se venden tus productos. Después de tu primera venta, la moneda queda bloqueada y no se puede cambiar. Para cambiar tu moneda de pago, ingresa a configuración de pago.</small>
                 </div>
             </div>
 

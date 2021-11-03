@@ -1,4 +1,4 @@
-@extends('wecommerce::back.layouts.auth')
+@extends('werknhub::back.layouts.auth')
 
 @section('content')
     <div class="container">

@@ -1,4 +1,4 @@
-@extends('wecommerce::back.layouts.config')
+@extends('werknhub::back.layouts.config')
 
 @section('title')
     <div class="d-sm-flex align-items-center justify-content-between mg-lg-b-30">
@@ -59,7 +59,7 @@
 
                 <div class="row">
                     @php
-                        $countries = \Nowyouwerkn\WeCommerce\Models\Country::orderBy('id', 'desc')->get();
+                        $countries = \Nowyouwerkn\WerknHub\Models\Country::orderBy('id', 'desc')->get();
                     @endphp
 
                     <div class="col-md-6">

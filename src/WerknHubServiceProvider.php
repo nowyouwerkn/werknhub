@@ -6,6 +6,13 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator; 
 use Illuminate\Pagination\LengthAwarePaginator;
+use Nowyouwerkn\WerknHub\Models\SiteTheme;
+
+/* Fortify Auth */
+use Laravel\Fortify\Fortify;
+
+use Nowyouwerkn\WerknHub\Services\Auth\CreateNewUser as NewUser;
+use Nowyouwerkn\WerknHub\Responses\LoginResponse;
 
 class WerknHubServiceProvider extends ServiceProvider
 {
@@ -16,6 +23,7 @@ class WerknHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->make('Nowyouwerkn\WerknHub\Controllers\FrontController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\DashboardController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\ExtensionController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\IntegrationController');
@@ -37,9 +45,31 @@ class WerknHubServiceProvider extends ServiceProvider
         // Utilizar estilos de Bootstrap en la paginación
         Paginator::useBootstrap();
 
+        // Definir el Tema Usado en el Sistema
+        $this->theme = new SiteTheme;
+
+        // Vistas de autenticación usando Fortify
+        Fortify::createUsersUsing(NewUser::class);
+
+        Fortify::loginView(function () {
+            return view('front.theme.' . $this->theme->get_name() . '.auth');
+        });
+
+        Fortify::registerView(function () {
+            return view('front.theme.' . $this->theme->get_name() . '.auth');
+        });
+
+        // Redirección personalizada en Fortify
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
+
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'werknhub');
+
+        // Primera ruta es de donde viene el recurso a publicar y la segunda ruta en que parte se instalará.
+        $this->publishes([
+            __DIR__.'/resources/views/front/werkn-backbone-bootstrap' => resource_path('views/front/theme/werkn-backbone-bootstrap'),
+        ], 'werkn-bootstrap');
 
         // Publica los archivos de traducción del sistema
         $this->publishes([
@@ -62,7 +92,6 @@ class WerknHubServiceProvider extends ServiceProvider
         ], 'config_files');
 
         // Publicar archivos de base de datos
-        /*
         $this->publishes([
             __DIR__.'/database/migrations' => database_path('migrations/'),
         ], 'migration_files');
@@ -70,6 +99,5 @@ class WerknHubServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/seeders' => database_path('seeders/'),
         ], 'seeder_files');
-        */
     }
 }

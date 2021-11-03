@@ -2,19 +2,17 @@
 <html lang="es">
     <head>
         @php
-            $store_config = Nowyouwerkn\WeCommerce\Models\StoreConfig::first(['store_name', 'contact_email', 'phone']);
+            $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first(['store_name', 'contact_email', 'phone']);
         @endphp
 
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ $store_config->store_name ?? 'WeCommerce' }}</title>
+        <title>{{ $site_config->store_name ?? 'WerknHub' }}</title>
 
         <!-- SEO -->
-        <meta name="description" content="{{ $store_config->store_name ?? 'WeCommerce' }}">
+        <meta name="description" content="{{ $site_config->store_name ?? 'WerknHub' }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @stack('seo')
-
-        <!-- FAVICON -->
 
 		<!-- CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -47,11 +45,8 @@
 
     	@stack('scripts')
 
-
-        @include('front.theme.werkn-backbone-bootstrap.layouts.partials._modal_popup')
-
         @php
-            $integrations = Nowyouwerkn\WeCommerce\Models\Integration::where('is_active', true)->get(['name', 'code']);
+            $integrations = Nowyouwerkn\WerknHub\Models\Integration::where('is_active', true)->get(['name', 'code']);
         @endphp
 
         @foreach($integrations as $integration)
@@ -62,11 +57,5 @@
                 @stack('pixel-events')
             @endif
         @endforeach
-
-        <script type="text/javascript">
-            $('.contact_action').on('click', function(){
-                fbq('track', 'Contact');
-            });
-        </script>
 	</body>
 </html>

@@ -26,7 +26,7 @@
 </div>
 @endif
 
-@if (count($errors) > 0)
+@if (!empty($errors) > 0)
 <div class="alert alert-danger fade show alert-dismissable alert-fixed">
     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
     <strong>¡Error!</strong>

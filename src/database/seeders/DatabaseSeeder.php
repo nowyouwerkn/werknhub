@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(LegalTextSeeder::class);
         $this->call(SiteThemeSeeder::class);
+        $this->call(CountriesSeeder::class);
+        $this->call(StatesSeeder::class);
     }
 }

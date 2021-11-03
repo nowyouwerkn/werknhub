@@ -105,7 +105,7 @@
                             </div>
 
                             @php
-                                $legals = Nowyouwerkn\WeCommerce\Models\LegalText::all();
+                                $legals = Nowyouwerkn\WerknHub\Models\LegalText::all();
                             @endphp
 
                             <div class="form-group pl-4">
