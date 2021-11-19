@@ -13,10 +13,10 @@ Route::get('/', [
     'as' => 'index',
 ]);
 
-Route::get('legals/{type}', 'Nowyouwerkn\WeCommerce\Controllers\FrontController@legalText')->name('legal.text');
+Route::get('legals/{type}', 'Nowyouwerkn\WerknHub\Controllers\FrontController@legalText')->name('legal.text');
 
 // Back-End Views
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin','middleware' => ['can:admin_access']], function(){
     //Dashboard
     Route::get('/', 'Nowyouwerkn\WerknHub\Controllers\DashboardController@index')->name('dashboard'); //
     Route::get('/change-color', [

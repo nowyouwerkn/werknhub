@@ -1,16 +1,12 @@
 <!doctype html>
 <html lang="es">
     <head>
-        @php
-            $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first(['store_name', 'contact_email', 'phone']);
-        @endphp
-
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ $site_config->store_name ?? 'WerknHub' }}</title>
+        <title>{{ $site_config->site_name ?? 'WerknHub' }}</title>
 
         <!-- SEO -->
-        <meta name="description" content="{{ $site_config->store_name ?? 'WerknHub' }}">
+        <meta name="description" content="{{ $site_config->site_name ?? 'WerknHub' }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @stack('seo')
 
@@ -44,10 +40,6 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     	@stack('scripts')
-
-        @php
-            $integrations = Nowyouwerkn\WerknHub\Models\Integration::where('is_active', true)->get(['name', 'code']);
-        @endphp
 
         @foreach($integrations as $integration)
             <!-- {{ $integration->name }} -->

@@ -104,10 +104,6 @@
                                 </div>
                             </div>
 
-                            @php
-                                $legals = Nowyouwerkn\WerknHub\Models\LegalText::all();
-                            @endphp
-
                             <div class="form-group pl-4">
                                 <input class="form-check-input" type="checkbox" name="accept" id="accept" required="">
                                 <label style="text-transform: uppercase; font-weight: bold; font-size: .8em; display: inline-block; margin-bottom: 10px; margin-top: 5px;" for="accept">

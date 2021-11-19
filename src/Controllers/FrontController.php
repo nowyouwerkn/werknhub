@@ -3,6 +3,7 @@
 namespace Nowyouwerkn\WerknHub\Controllers;
 use App\Http\Controllers\Controller;
 
+use View;
 use Session;
 use Auth;
 use Carbon\Carbon;
@@ -11,7 +12,6 @@ use Carbon\Carbon;
 use Config;
 use Mail;
 
-use Nowyouwerkn\WerknHub\Models\SiteConfig;
 use Nowyouwerkn\WerknHub\Models\SiteTheme;
 use Nowyouwerkn\WerknHub\Models\LegalText;
 
@@ -32,13 +32,11 @@ class FrontController extends Controller
 {
     private $notification;
     private $theme;
-    private $store_config;
 
     public function __construct()
     {
         $this->notification = new NotificationController;
         $this->theme = new SiteTheme;
-        $this->store_config = new SiteConfig;
     }
     
     public function index ()

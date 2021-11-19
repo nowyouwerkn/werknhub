@@ -1,12 +1,8 @@
-@php
-    $legals = Nowyouwerkn\WerknHub\Models\LegalText::get(['type']);
-@endphp
-
 <footer class="bg-dark text-white pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <a href="index.html" class="footer-logo"><img src="{{ asset('themes/werkn-backbone/img/logo/w_logo.svg') }}" alt=""></a>
+            
             </div>
             <div class="col-md-8">
                 <div class="row">

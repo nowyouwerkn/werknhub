@@ -17,10 +17,6 @@
                     <img src="{{ 'https://www.gravatar.com/avatar/' . md5(strtolower(trim( Auth::user()->email ?? 'N/A'))) . '?d=retro&s=150' }}" alt="user" class="rounded-circle">     
                 </a>
                 <div class="aside-alert-link">
-                    <a href="{{ route('update.messages') }}" class="new" data-toggle="tooltip" title="Nuevas actualizaciones en tu plataforma de WeCommerce">
-                        <i data-feather="message-square"></i>
-                    </a>
-                    
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-1').submit();" data-toggle="tooltip" title="Cerrar Sesión">
                         <i data-feather="log-out"></i>
                         <form id="logout-form-1" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -67,15 +63,99 @@
                 <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="pie-chart"></i> <span>Inicio</span></a>
             </li>
 
+            @foreach($extensions as $extension)
+                @switch($extension->name)
+                    @case('WeBlog')
+                        <li class="nav-item with-sub">
+                            <a href="" class="nav-link"><i data-feather="type"></i> <span>Blog</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('wb_posts.index') }}">Publicaciones</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('wb_categories.index') }}">Categorías</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('wb_reviews.index') }}">Comentarios</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @break
 
-            <li class="nav-item">
-                <a href="{{ route('extensions.index') }}" class="nav-link">
-                    <i data-feather="users"></i> <span>Extensiones</span>
-                </a>
-            </li>
+                    @case('WeCommerce')
+                        <li class="nav-item with-sub show">
+                            <a href="" class="nav-link"><i data-feather="tag"></i> <span>Productos</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{ route('products.index') }}">Ver Todos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('stocks.index') }}">Inventario</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('variants.index') }}">Variantes</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('categories.index') }}">Colecciones</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            @php
+                                $new_orders_kpi = Nowyouwerkn\WeCommerce\Models\Order::where('created_at', '>=', Carbon\Carbon::now()->subWeek())->count();
+                            @endphp
+
+                            <a href="{{ route('orders.index') }}" class="nav-link d-flex justify-content-between">
+                                <span><i data-feather="shopping-bag"></i>Órdenes</span><span class="badge text-white bg-teal" data-toggle="tooltip" data-placement="right" title="Nuevas esta semana">{{ $new_orders_kpi }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('clients.index') }}" class="nav-link">
+                                <i data-feather="users"></i> <span>Clientes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('coupons.index') }}" class="nav-link">
+                                <i data-feather="percent"></i> <span>Cupones</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            @php
+                                $new_reviews_kpi = Nowyouwerkn\WeCommerce\Models\Review::where('is_approved', false)->count();
+                            @endphp
+
+                            <a href="{{ route('reviews.index') }}" class="nav-link d-flex justify-content-between">
+                                <span><i data-feather="edit-3"></i>Reseñas</span> <span class="badge text-white bg-teal" data-toggle="tooltip" data-placement="right" title="Por aprobar">{{ $new_reviews_kpi }}</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-label mg-t-25">Canales de Venta</li>
+                        <li class="nav-item">
+                            <a href="" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalSaleChannels" style="margin-top:5px; padding:5px 10px;"><i data-feather="plus"></i> Agregar nuevo canal</a>
+                        </li>
+
+                        @break
+
+                    @case('WeFood')
+                         <li class="nav-item">
+                            <a href="{{ route('wefood.index') }}" class="nav-link">
+                                <i data-feather="heart"></i> <span>{{ $extension->name }}</span>
+                            </a>
+                        </li>
+                        @break
+
+                    @default
+                        Hubo un problema, intenta después.
+                @endswitch
+            @endforeach
 
             <li class="nav-label mg-t-100">Configuración</li>
             <li class="nav-item">
+                <li class="nav-item">
+                    <a href="{{ route('extensions.index') }}" class="nav-link">
+                        <i data-feather="package"></i> <span>Extensiones</span>
+                    </a>
+                </li>
                 <a href="{{ route('configuration') }}" class="nav-link">
                     <i data-feather="settings"></i> <span>Configuración</span>
                 </a>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nowyouwerkn\WeCommerce\Services;
+namespace Nowyouwerkn\WerknHub\Services;
 
 /* Facebook SDK */
 use FacebookAds\Api;
@@ -16,8 +16,8 @@ use FacebookAds\Object\ServerSide\UserData;
 /* IP Location */
 use Stevebauman\Location\Facades\Location;
 
-/* WeCommerce Models */
-use Nowyouwerkn\WeCommerce\Models\StoreConfig;
+/* WerknHub Models */
+use Nowyouwerkn\WerknHub\Models\SiteConfig;
 
 /* Regular Laravel */
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +36,7 @@ class FacebookEvents
     public function __construct()
     {
         // Configuración
-        $config = StoreConfig::first();
+        $config = SiteConfig::first();
 
         $this->access_token = $config->facebook_access_token;
         $this->pixel_id = $config->facebook_pixel;

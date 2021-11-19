@@ -47,10 +47,6 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashforge.dashboard.css') }}">
 
-    @php
-        $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first();
-    @endphp
-
     <style>
         .image-table {
             width: 120px;
