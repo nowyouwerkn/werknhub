@@ -48,7 +48,7 @@ class ExtensionController extends Controller
         $extension->save();
 
         // WeBlog Rutas
-        Storage::disk('routes')->append('web.php', 'ESTA ES LA NUEVA RUTA MI BUEN');
+        Storage::disk('routes')->append('web.php', );
 
         //Session message
         Session::flash('success', 'Guardado exitoso, la extensión quedó activa. En tu navegación verás implementada la extension.');

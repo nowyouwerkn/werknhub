@@ -4,7 +4,25 @@
             <div class="col-5">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item"><a href="{{ route('index') }}">Inicio</a></li>
-                    <li class="list-inline-item"><a href="{{ route('index') }}">Blog</a></li>
+                    @foreach($extensions as $extension)
+                        @switch($extension->name)
+                            @case('WeBlog')
+                                <li class="list-inline-item"><a href="{{ route('blog.index') }}">Blog</a></li>
+                                @break
+
+                            @case('WeCommerce')
+                                <li class="list-inline-item"><a href="{{ route('index') }}">WeCommerce</a></li>
+
+                                @break
+
+                            @case('WeFood')
+                                <li class="list-inline-item"><a href="{{ route('index') }}">WeFood</a></li>
+                                @break
+
+                            @default
+                                Hubo un problema, intenta después.
+                        @endswitch
+                    @endforeach                    
                 </ul>
             </div>
             <div class="col-2">

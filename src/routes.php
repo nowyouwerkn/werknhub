@@ -2,12 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-Route::get('/werknhub/bienvenido', [
-    'uses' => 'Nowyouwerkn\WerknHub\Controllers\WerknHubController@index',
-    'as' => 'werknhub.index',
-]);
-*/
 Route::get('/', [
     'uses' => 'Nowyouwerkn\WerknHub\Controllers\FrontController@index',
     'as' => 'index',
@@ -16,7 +10,7 @@ Route::get('/', [
 Route::get('legals/{type}', 'Nowyouwerkn\WerknHub\Controllers\FrontController@legalText')->name('legal.text');
 
 // Back-End Views
-Route::group(['prefix' => 'admin','middleware' => ['can:admin_access']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']], function(){
     //Dashboard
     Route::get('/', 'Nowyouwerkn\WerknHub\Controllers\DashboardController@index')->name('dashboard'); //
     Route::get('/change-color', [

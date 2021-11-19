@@ -43,4 +43,11 @@ class FrontController extends Controller
     {
         return view('front.theme.' . $this->theme->get_name() . '.index');
     }
+
+    public function legalText($type)
+    {
+        $text = LegalText::where('type', $type)->first();
+
+        return view('front.theme.' . $this->theme->get_name() . '.legal')->with('text', $text);
+    }
 }

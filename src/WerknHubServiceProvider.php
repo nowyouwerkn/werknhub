@@ -2,17 +2,20 @@
 
 namespace Nowyouwerkn\WerknHub;
 
+use View;
+
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator; 
 use Illuminate\Pagination\LengthAwarePaginator;
+
 use Nowyouwerkn\WerknHub\Models\SiteTheme;
 use Nowyouwerkn\WerknHub\Models\SiteConfig;
 use Nowyouwerkn\WerknHub\Models\LegalText;
 use Nowyouwerkn\WerknHub\Models\Integration;
 use Nowyouwerkn\WerknHub\Models\Extension;
 
-use View;
 
 /* Fortify Auth */
 use Laravel\Fortify\Fortify;
