@@ -1,7 +1,3 @@
-@php
-    $theme = Nowyouwerkn\WerknHub\Models\SiteTheme::where('is_active', 1)->first();
-@endphp
-
 @extends('front.theme.' . $theme->name . '.layouts.main')
 
 @push('seo')

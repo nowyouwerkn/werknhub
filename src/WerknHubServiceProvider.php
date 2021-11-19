@@ -115,10 +115,12 @@ class WerknHubServiceProvider extends ServiceProvider
         $legals = LegalText::get(['type']);
         $integrations = Integration::where('is_active', true)->get(['name', 'code']);
         $extensions = Extension::where('is_active', true)->get(['name']);
+        $theme = SiteTheme::where('is_active', 1)->first();
 
         View::share('site_config', $site_config);
         View::share('legals', $legals);
         View::share('integrations', $integrations);
         View::share('extensions', $extensions);
+        View::share('theme', $theme);
     }
 }
