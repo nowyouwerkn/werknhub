@@ -14,7 +14,25 @@
                         <ul class="list-unstyled">
                             <li class="mb-3"><strong>Sitio</strong></li>
                             <li><a href="{{ route('index') }}">Inicio</a></li>
-                            <li><a href="{{ route('index') }}">Blog</a></li>
+                            @foreach($extensions as $extension)
+                                @switch($extension->name)
+                                    @case('weblog')
+                                        <li><a href="{{ route('wb-blog.index') }}">Blog</a></li>
+                                        @break
+
+                                    @case('wecommerce')
+                                        <li><a href="{{ route('index') }}">WeCommerce</a></li>
+
+                                        @break
+
+                                    @case('wefood')
+                                        <li><a href="{{ route('index') }}">WeFood</a></li>
+                                        @break
+
+                                    @default
+                                        Hubo un problema, intenta después.
+                                @endswitch
+                            @endforeach 
                         </ul>
                     </div>
 

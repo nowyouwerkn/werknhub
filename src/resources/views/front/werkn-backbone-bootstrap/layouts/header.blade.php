@@ -6,16 +6,16 @@
                     <li class="list-inline-item"><a href="{{ route('index') }}">Inicio</a></li>
                     @foreach($extensions as $extension)
                         @switch($extension->name)
-                            @case('WeBlog')
-                                <li class="list-inline-item"><a href="{{ route('blog.index') }}">Blog</a></li>
+                            @case('weblog')
+                                <li class="list-inline-item"><a href="{{ route('wb-blog.index') }}">Blog</a></li>
                                 @break
 
-                            @case('WeCommerce')
+                            @case('wecommerce')
                                 <li class="list-inline-item"><a href="{{ route('index') }}">WeCommerce</a></li>
 
                                 @break
 
-                            @case('WeFood')
+                            @case('wefood')
                                 <li class="list-inline-item"><a href="{{ route('index') }}">WeFood</a></li>
                                 @break
 

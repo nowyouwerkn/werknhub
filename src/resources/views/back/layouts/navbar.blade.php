@@ -70,13 +70,10 @@
                             <a href="" class="nav-link"><i data-feather="type"></i> <span>Blog</span></a>
                             <ul>
                                 <li>
-                                    <a href="{{ route('wb_posts.index') }}">Publicaciones</a>
+                                    <a href="{{ route('posts.index') }}">Publicaciones</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('wb_categories.index') }}">Categorías</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('wb_reviews.index') }}">Comentarios</a>
+                                    <a href="{{ route('categories.index') }}">Categorías</a>
                                 </li>
                             </ul>
                         </li>
