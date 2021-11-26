@@ -78,9 +78,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']],
 
     Route::resource('themes', Nowyouwerkn\WerknHub\Controllers\SiteThemeController::class); 
 
-    Route::post('store-logo',[
-        'uses' => 'Nowyouwerkn\WerknHub\Controllers\IntegrationController@storeLogo',
-        'as' => 'store.logo',
+    Route::post('site-logo',[
+        'uses' => 'Nowyouwerkn\WerknHub\Controllers\IntegrationController@siteLogo',
+        'as' => 'site.logo',
     ]);
 
     // Sección Soporte

@@ -30,9 +30,9 @@ class IntegrationController extends Controller
     public function index()
     {
         $integrations = Integration::all();
-        $store_logo = SiteConfig::first();
+        $site_logo = SiteConfig::first();
 
-        return view('werknhub::back.store_config.index', compact('integrations', 'store_logo'));
+        return view('werknhub::back.site_config.index', compact('integrations', 'site_logo'));
     }
 
     public function storeLogo(Request $request)
@@ -46,7 +46,7 @@ class IntegrationController extends Controller
 
             Image::make($image)->resize(400,null, function($constraint){ $constraint->aspectRatio(); })->save($location);
 
-            $config->store_logo = $filename;
+            $config->site_logo = $filename;
         }
 
         $config->save();

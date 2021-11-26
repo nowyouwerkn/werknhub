@@ -65,7 +65,7 @@
 
             @foreach($extensions as $extension)
                 @switch($extension->name)
-                    @case('WeBlog')
+                    @case('weblog')
                         <li class="nav-item with-sub">
                             <a href="" class="nav-link"><i data-feather="type"></i> <span>Blog</span></a>
                             <ul>
@@ -82,7 +82,7 @@
                         </li>
                         @break
 
-                    @case('WeCommerce')
+                    @case('wecommerce')
                         <li class="nav-item with-sub show">
                             <a href="" class="nav-link"><i data-feather="tag"></i> <span>Productos</span></a>
                             <ul>
@@ -136,7 +136,7 @@
 
                         @break
 
-                    @case('WeFood')
+                    @case('wefood')
                          <li class="nav-item">
                             <a href="{{ route('wefood.index') }}" class="nav-link">
                                 <i data-feather="heart"></i> <span>{{ $extension->name }}</span>

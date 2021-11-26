@@ -31,7 +31,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/favicon.png">
 
-    <title>Werkn Commerce - Vista Principal</title>
+    <title>WerknHub - Vista Principal</title>
 
     <!-- vendor css -->
     <link href="{{ asset('lib/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -59,7 +59,7 @@
         }
     </style>
 
-    @if($site_config->store_logo == NULL)
+    @if($site_config->site_logo == NULL)
         <style type="text/css">
             .aside-logo {
                 background: url("{{ asset('assets/img/logo.png') }}");
@@ -79,7 +79,7 @@
     @else
         <style type="text/css">
             .aside-logo {
-                background: url("{{ asset('assets/img/' . $site_config->store_logo) }}");
+                background: url("{{ asset('assets/img/' . $site_config->site_logo) }}");
                 background-position: center center;
                 background-size: contain;
                 background-repeat: no-repeat;

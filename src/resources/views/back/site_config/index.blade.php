@@ -1,11 +1,11 @@
-@extends('wecommerce::back.layouts.main')
+@extends('werknhub::back.layouts.main')
 
 @section('title')
     <div class="d-sm-flex align-items-center justify-content-between mg-lg-b-30">
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="#">wcommerce</a></li>
+                <li class="breadcrumb-item"><a href="#">WerknHub</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Preferencias Generales</li>
                 </ol>
             </nav>
@@ -68,17 +68,17 @@
             <h4>Logotipo de Tienda</h4>
             <p class="mb-4"><strong>Operativo</strong></p>
 
-            @if($store_logo->store_logo == NULL)
+            @if($site_logo->site_logo == NULL)
             <div class="text-center">
                 <img src="{{ asset('assets/img/logo.png') }}" class="ml-auto mr-auto mb-5">
             </div>
             @else
             <div class="text-center">
-                <img src="{{ asset('assets/img/' . $store_logo->store_logo ?? 'logo-store.png') }}" class="ml-auto mr-auto mb-5">
+                <img src="{{ asset('assets/img/' . $site_logo->site_logo ?? 'logo-store.png') }}" class="ml-auto mr-auto mb-5">
             </div>
             @endif
 
-            @if($store_logo->store_logo == NULL)
+            @if($site_logo->site_logo == NULL)
             <a href="javascript:void(0)" data-toggle="modal" data-target="#modalLogo" class="btn btn-sm btn-outline-light btn-uppercase btn-block mt-3">Subir Logotipo</a>
             @else
             <a href="javascript:void(0)" data-toggle="modal" data-target="#modalLogo" class="btn btn-sm btn-outline-light btn-uppercase btn-block mt-3">Editar Logotipo</a>
@@ -144,18 +144,14 @@
             <h4>API de Conversiones Facebook</h4>
             <p class="mb-4">Al configurar tu API de conversiones se enviarán eventos desde el servidor a diferencia desde el navegador. De esta forma los bloqueos de rastreo son más laxos.</p>
 
-            @php
-                $config = Nowyouwerkn\WeCommerce\Models\StoreConfig::first();
-            @endphp
-
             <form method="POST" action="{{ route('api.token.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
                 <h6 class="text-uppercase">Token de Acceso</h6>
 
                 <div class="d-flex">
-                    <input type="text" class="form-control" style="width: 30%; margin-right: 15px;" name="facebook_pixel" placeholder="Identificador de pixel " value="{{ $config->facebook_pixel }}">
+                    <input type="text" class="form-control" style="width: 30%; margin-right: 15px;" name="facebook_pixel" placeholder="Identificador de pixel " value="{{ $site_config->facebook_pixel }}">
 
-                    <input type="text" class="form-control" style="width: 70%;" name="facebook_access_token" placeholder="Token de Acceso" value="{{ $config->facebook_access_token }}">
+                    <input type="text" class="form-control" style="width: 70%;" name="facebook_access_token" placeholder="Token de Acceso" value="{{ $site_config->facebook_access_token }}">
 
                     <button class="btn btn-success btn-icon ml-3" type="submit"><i class="fas fa-save"></i></button>
                 </div>
@@ -213,7 +209,7 @@
                 </button>
             </div>
             
-            <form method="POST" action="{{ route('store.logo') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('site.logo') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
                 <div class="modal-body pd-25">
                     <div class="form-group mt-2">

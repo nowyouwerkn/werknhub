@@ -1,4 +1,4 @@
-@extends('wecommerce::back.layouts.main')
+@extends('werknhub::back.layouts.main')
 
 @section('content')
     show notification

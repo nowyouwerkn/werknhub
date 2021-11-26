@@ -5,7 +5,7 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="#">wcommerce</a></li>
+                <li class="breadcrumb-item"><a href="#">WerknHub</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Extensiones</li>
                 </ol>
             </nav>
@@ -67,12 +67,11 @@
 
             @if($extensions->count() == 0)
             <div class="text-center">
-                <img src="{{ asset('assets/img/group_9.svg') }}" class="wd-40p ml-auto mr-auto mb-5">
+                <img src="{{ asset('assets/img/group_10.svg') }}" class="wd-40p ml-auto mr-auto mb-5">
                 <h4>No hay extensiones activas en tu plataforma.</h4>
                 <p class="mb-4">Empieza dando click en el botón inferior.</p>
             </div>
             @else
-
             <div class="row">
                 @foreach($extensions as $extension)
                 <div class="col-md-6">
@@ -132,7 +131,7 @@
                     </div>
 
                     <div class="alert alert-warning">
-                        <p class="mb-0">Al guardar la información de esta apariencia se activará automáticamente. Si tienes otra apariencia activa en tu plataforma se desactivará.</p>
+                        <p class="mb-0">Al guardar la información de esta extensión el sistema la instalará y se activará automáticamente. Si tu plataforma no funciona con la actualización: <a href="">contacta a soporte</a></p>
                     </div>
                 </div>
                 <div class="modal-footer">

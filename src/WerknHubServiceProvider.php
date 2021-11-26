@@ -16,7 +16,6 @@ use Nowyouwerkn\WerknHub\Models\LegalText;
 use Nowyouwerkn\WerknHub\Models\Integration;
 use Nowyouwerkn\WerknHub\Models\Extension;
 
-
 /* Fortify Auth */
 use Laravel\Fortify\Fortify;
 
@@ -36,7 +35,6 @@ class WerknHubServiceProvider extends ServiceProvider
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\DashboardController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\ExtensionController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\IntegrationController');
-        $this->app->make('Nowyouwerkn\WerknHub\Controllers\LegalTextController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\NotificationController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\SEOController');
         $this->app->make('Nowyouwerkn\WerknHub\Controllers\SiteConfigController');

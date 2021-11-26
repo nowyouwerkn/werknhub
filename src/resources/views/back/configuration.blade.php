@@ -1,4 +1,4 @@
-@extends('wecommerce::back.layouts.main')
+@extends('werknhub::back.layouts.main')
 
 @section('title')
     <div class="d-sm-flex align-items-center justify-content-between mg-lg-b-30">
@@ -51,24 +51,6 @@
         </div>
 
         <div class="col-md-4 mb-4">
-            <a href="{{ route('taxes.index') }}">
-                <div class="card card-body h-100">
-                    <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Impuestos</h3>
-                    <h6 class="tx-12 tx-color-03 mg-b-0 mt-2">Administra como tu tienda calcula impuestos. Valor estándar 16%.</h6>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('legals.index') }}">
-                <div class="card card-body h-100">
-                    <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Textos Legales</h3>
-                    <h6 class="tx-12 tx-color-03 mg-b-0 mt-2">Administra la información legal de diferentes secciones de tu página.</h6>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 mb-4">
             <a href="{{ route('users.index') }}">
                 <div class="card card-body h-100">
                     <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Usuarios y Permisos</h3>
@@ -82,24 +64,6 @@
                 <div class="card card-body h-100">
                     <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Notificaciones por Correo</h3>
                     <h6 class="tx-12 tx-color-03 mg-b-0 mt-2">Configura los datos de servidor SMTP para notificar por correo a tus clientes y a ti mismo.</h6>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('payments.index') }}">
-                <div class="card card-body h-100">
-                    <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Pagos</h3>
-                    <h6 class="tx-12 tx-color-03 mg-b-0 mt-2">Activa y administra las pasarelas de pago de tu tienda.</h6>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('shipments.index') }}">
-                <div class="card card-body h-100">
-                    <h3 class="tx-normal tx-rubik mg-b-0 mg-r-5 lh-1">Envíos</h3>
-                    <h6 class="tx-12 tx-color-03 mg-b-0 mt-2">Administra las pasarelas de envío para tu tienda.</h6>
                 </div>
             </a>
         </div>

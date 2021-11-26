@@ -9,7 +9,7 @@
 @endpush
 
 @section('content')
-<h1>Bienvenido a WerknHub</h1>
+<h1 class="mt-5 mb-5 text-center">Bienvenido a WerknHub</h1>
 @endsection
 
 @push('scripts')

@@ -5,7 +5,7 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="#">Werkn-Commerce</a></li>
+                <li class="breadcrumb-item"><a href="#">WerknHub</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                 </ol>
             </nav>
