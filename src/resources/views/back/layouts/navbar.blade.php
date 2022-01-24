@@ -63,6 +63,15 @@
                 <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="pie-chart"></i> <span>Inicio</span></a>
             </li>
 
+            <li class="nav-item with-sub">
+                <a href="" class="nav-link"><i data-feather="image"></i> <span> Marketing</span></a>
+                <ul>
+                  <li><a href="{{ route('banners.index') }}">Banners</a></li>
+                  <li><a href="{{ route('popups.index') }}">Pop-ups</a></li>
+                  <li><a href="{{ route('band.index') }}">Cintillo</a></li>
+                </ul>
+            </li>
+            
             @foreach($extensions as $extension)
                 @switch($extension->name)
                     @case('weblog')
@@ -77,7 +86,7 @@
                                 </li>
                             </ul>
                         </li>
-                        @break
+                    @break
 
                     @case('wecommerce')
                         <li class="nav-item with-sub show">
@@ -131,7 +140,7 @@
                             <a href="" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modalSaleChannels" style="margin-top:5px; padding:5px 10px;"><i data-feather="plus"></i> Agregar nuevo canal</a>
                         </li>
 
-                        @break
+                    @break
 
                     @case('wefood')
                          <li class="nav-item">
@@ -139,7 +148,7 @@
                                 <i data-feather="heart"></i> <span>{{ $extension->name }}</span>
                             </a>
                         </li>
-                        @break
+                    @break
 
                     @default
                         Hubo un problema, intenta después.

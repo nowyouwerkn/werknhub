@@ -73,6 +73,41 @@ Para comenzar a usar este paquete debes usar el siguiente comando para agregarlo
 ```
 composer require nowyouwerkn/werknhub
 ```
+Es necesario agregar proveedores al proyecto para poder utilizar todas las funciones de las librerias utilizadas por el paquete. Esto se agrega en el archivo `config/app.php` 
+
+```
+'providers' => [
+    // ...
+    Nowyouwerkn\WeCommerce\WerknHubServiceProvider::class,
+];
+```
+
+Publica todos los assets del paquete y sus dependencias usando
+```
+php artisan vendor:publish --provider="Nowyouwerkn\WerknHub\WerknHubServiceProvider" --force
+```
+Para que funcione correctamente el sistema es OBLIGATORIO publicar los archivos de `migrations`, `seeders`, `theme`, `public` y `config`.
+
+
+Limpia el caché de tu configuración
+```
+php artisan optimize:clear
+#o
+php artisan config:clear
+```
+
+El sistema necesita utilizar la ruta "/" que usa Laravel como vista de ejemplo en las rutas. Accede al documento `web.php` de tu proyecto de Laravel y sobreescribe la información con el archivo que se encuentra aqui: `https://github.com/nowyouwerkn/wecommerce/blob/main/src/routes.php`. Al realizarlo podrás usar.
+```
+php artisan serve
+```
+para prender tu servidor y acceder a `/instalador` para comenzar la instalación. Si estás usando Homestead no es necesario usar `php artisan serve`.
+
+Si prefieres preparar manualmente el proyecto sigue los siguientes comandos.
+
+```
+php artisan migrate
+php artisan db:seed
+```
 
 ## Uso
 

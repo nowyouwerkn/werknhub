@@ -16,7 +16,7 @@ use Nowyouwerkn\WerknHub\Models\PopUp;
 
 use Illuminate\Http\Request;
 
-class PopPpController extends Controller
+class PopUpController extends Controller
 {
     private $notification;
 
