@@ -9,5 +9,8 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $table = 'wk_cities';
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 }

@@ -14,6 +14,8 @@ use Storage;
 use Session;
 
 use Nowyouwerkn\Werknhub\Models\User;
+use Nowyouwerkn\WerknHub\Models\MailConfig;
+use Nowyouwerkn\WerknHub\Models\MailTheme;
 use Nowyouwerkn\Werknhub\Models\SiteConfig;
 use Nowyouwerkn\Werknhub\Models\SiteTheme;
 use Nowyouwerkn\Werknhub\Models\Notification;
@@ -26,13 +28,14 @@ class NotificationController extends Controller
     public function index()
     {
         $mail = MailConfig::take(1)->first();
+        $template = MailTheme::take(1)->first();
 
-        return view('werknhub::back.notifications.index', compact('mail'));
+        return view('werknhub::back.notifications.index')->with('mail', $mail)->with('template', $template);
     }
 
     public function all()
     {
-        $notifications = Notification::paginate(50);
+        $notifications = Notification::orderBy('created_at', 'desc')->paginate(50);
 
         return view('werknhub::back.notifications.all', compact('notifications'));
     }
@@ -55,12 +58,9 @@ class NotificationController extends Controller
     public function update(Request $request, $id)
     {
         $notifications = Notification::findOrFail($id);
-
         $notification->read_at = Carbon::now();
-
         $notification->save();
         
-
         // Mensaje de session
         Session::flash('success', 'Notificación marcadas como leídas.');
 
@@ -70,27 +70,6 @@ class NotificationController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function send($type, $by, $data)
-    {
-        /* LOG */
-        if ($by == NULL) {
-            $log = new Notification([
-                'type' => $type,
-                'data' => $data,
-                'is_hidden' => false
-            ]);
-        }else{
-            $log = new Notification([
-                'action_by' => $by->id,
-                'type' => $type,
-                'data' => $data,
-                'is_hidden' => false
-            ]);
-        }
-        
-        $log->save();
     }
 
     public function markAsRead()

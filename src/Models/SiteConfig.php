@@ -9,6 +9,9 @@ class SiteConfig extends Model
 {
     use HasFactory;
 
+    protected $table = 'wk_site_configs';
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 
     public function has_pixel()

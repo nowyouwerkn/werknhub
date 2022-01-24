@@ -99,7 +99,7 @@ class SiteConfigController extends Controller
         $config->save();
 
         //Session message
-        Session::flash('success', 'Excelente, tu tienda esta lista para usarse. Sigue las recomendaciones para completarla correctamente.');
+        Session::flash('success', 'Excelente, tu página web está lista para usarse. Sigue las recomendaciones para completarla correctamente.');
 
         return redirect()->route('dashboard');
     }

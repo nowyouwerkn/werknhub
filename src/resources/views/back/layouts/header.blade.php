@@ -1,7 +1,7 @@
 <div class="content-header">
     <form class="content-search" role="search" action="{{ route('back.search.query') }}" style="width: 300px;">
         <button type="submit" class="btn btn-link p-0"><i data-feather="search"></i></button>
-        <input type="search" name="query" class="form-control" placeholder="Buscar por SKU, Nombre o Etiquetas...">
+        <input type="search" name="query" class="form-control" placeholder="Busca en todo tu sistema...">
     </form>
     
     <nav class="nav">

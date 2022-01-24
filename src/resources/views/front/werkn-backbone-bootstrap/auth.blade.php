@@ -91,8 +91,6 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
-
-            
                                 </div>
                             </div>
 
@@ -110,26 +108,7 @@
                                     Al registrar tu cuenta con nosotros aceptas nuestro  
                                     @foreach($legals as $legal)
                                     <a style="font-size: 1em !important;" href="#">
-                                        @switch($legal->type)
-                                            @case('Returns')
-                                                Política de Devoluciones
-                                                @break
-
-                                            @case('Privacy')
-                                                Política de Privacidad
-                                                @break
-
-                                            @case('Terms')
-                                                Términos y Condiciones
-                                                @break
-
-                                            @case('Shipment')
-                                                Política de Envíos
-                                                @break
-
-                                            @default
-                                                Hubo un problema, intenta después.
-                                        @endswitch 
+                                        {{ $legal->title }}
                                     </a>
                                     @endforeach
                                     . Solo mandamos correos de <strong>notificación</strong> de compra o <strong>seguimiento</strong> de orden.

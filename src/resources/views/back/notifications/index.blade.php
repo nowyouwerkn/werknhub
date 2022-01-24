@@ -28,10 +28,15 @@
 @endsection
 
 @section('content')
+
+@if($mail == NULL)
+<form method="POST" action="{{ route('mail.store') }}" enctype="multipart/form-data">
+    {{ csrf_field() }}
+@else
 <form method="POST" action="{{ route('mail.update', $mail->id) }}" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
-
+@endif
     <div class="row">
         <div class="col-md-4">
             <div class="pr-5 pt-1 pl-3">
@@ -47,8 +52,8 @@
                 <button type="submit" class="btn btn-primary btn-lg">Guardar Cambios <i class="far fa-save"></i></button>
             </div>
         </div>
+
         <div class="col-md-8">
-            
             <div class="card mb-4">
                 <div class="card-body">
                 
@@ -93,9 +98,7 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
-
 </form>
 @endsection

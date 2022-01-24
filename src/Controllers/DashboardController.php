@@ -79,14 +79,6 @@ class DashboardController extends Controller
     {   
         $search_query = $request->input('query');
 
-        $products = Product::where('name', 'LIKE', "%{$search_query}%")
-        ->where('category_id', '!=', NULL)
-        ->orWhere('description', 'LIKE', "%{$search_query}%")
-        ->orWhere('search_tags', 'LIKE', "%{$search_query}%")
-        ->orWhereHas('category', function ($query) use ($search_query) {
-            $query->where(strtolower('name'), 'LIKE', '%' . strtolower($search_query) . '%');
-        })->paginate(30);
-
-        return view('werknhub::back.general_search')->with('products', $products);
+        return view('werknhub::back.general_search')->with('search_query', $search_query);
     }
 }

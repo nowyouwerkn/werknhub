@@ -15,12 +15,11 @@ use Nowyouwerkn\WerknHub\Models\SiteConfig;
 use Nowyouwerkn\WerknHub\Models\LegalText;
 use Nowyouwerkn\WerknHub\Models\Integration;
 use Nowyouwerkn\WerknHub\Models\Extension;
+use Nowyouwerkn\WerknHub\Models\PopUp;
 
 /* Fortify Auth */
 use Laravel\Fortify\Fortify;
-
 use Nowyouwerkn\WerknHub\Services\Auth\CreateNewUser as NewUser;
-use Nowyouwerkn\WerknHub\Responses\LoginResponse;
 
 class WerknHubServiceProvider extends ServiceProvider
 {
@@ -66,9 +65,7 @@ class WerknHubServiceProvider extends ServiceProvider
             return view('front.theme.' . $this->theme->get_name() . '.auth');
         });
 
-        // Redirección personalizada en Fortify
-        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
-
+        // Configuración básica de funcionalidad del sistema
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'werknhub');
@@ -99,10 +96,11 @@ class WerknHubServiceProvider extends ServiceProvider
         ], 'config_files');
 
         // Publicar archivos de base de datos
+        /*
         $this->publishes([
             __DIR__.'/database/migrations' => database_path('migrations/'),
         ], 'migration_files');
-
+        */
         $this->publishes([
             __DIR__.'/database/seeders' => database_path('seeders/'),
         ], 'seeder_files');
@@ -110,15 +108,17 @@ class WerknHubServiceProvider extends ServiceProvider
 
         // Variables globales WerknHub
         $site_config = SiteConfig::first(['site_name', 'contact_email', 'phone']);
-        $legals = LegalText::get(['type']);
+        $legals = LegalText::get(['title', 'slug']);
         $integrations = Integration::where('is_active', true)->get(['name', 'code']);
         $extensions = Extension::where('is_active', true)->get(['name']);
         $theme = SiteTheme::where('is_active', 1)->first();
+        $popup = PopUp::where('is_active', true)->first();
 
         View::share('site_config', $site_config);
         View::share('legals', $legals);
         View::share('integrations', $integrations);
         View::share('extensions', $extensions);
         View::share('theme', $theme);
+        View::share('popup', $popup);
     }
 }

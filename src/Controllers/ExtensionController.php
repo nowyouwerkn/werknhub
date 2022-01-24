@@ -47,6 +47,15 @@ class ExtensionController extends Controller
 
         $extension->save();
 
+        // Notificación
+        $type = 'Extension';
+        $by = Auth::user();
+        $data = 'agregó la extensión "' . $extension->name . '" a tu plataforma.';
+        $model_action = "create";
+        $model_id = $extension->id;
+
+        $this->notification->send($type, $by ,$data, $model_action, $model_id);
+
         //Session message
         Session::flash('success', 'Guardado exitoso, la extensión quedó activa. En tu navegación verás implementada la extension.');
 

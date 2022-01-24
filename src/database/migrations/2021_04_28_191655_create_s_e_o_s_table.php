@@ -13,7 +13,7 @@ class CreateSEOSTable extends Migration
      */
     public function up()
     {
-        Schema::create('s_e_o_s', function (Blueprint $table) {
+        Schema::create('wk_s_e_o_s', function (Blueprint $table) {
             $table->id();
 
             /* Page General Configuration */
@@ -44,6 +44,6 @@ class CreateSEOSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('s_e_o_s');
+        Schema::dropIfExists('wk_s_e_o_s');
     }
 }

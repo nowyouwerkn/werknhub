@@ -16,8 +16,8 @@ class SiteThemeSeeder extends Seeder
     {
         SiteTheme::create([
             'name' => 'werkn-backbone-bootstrap',
-            'description' => 'Apariencia inicial para cualquier excelente plataforma de e-commerce usando wecommerce, basado exlusivamente en Bootstrp',
-            'image' => 'werkn-backbone-bootstrap.jpg',
+            'description' => 'Apariencia inicial para cualquier excelente página informativa usando Werkn Hub, basado exlusivamente en Bootstrap 5.0',
+            'image' => 'no-image.jpg',
             'is_active' => true,
             'version' => '1.0'
         ]);

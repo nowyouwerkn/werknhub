@@ -60,6 +60,15 @@ class SiteThemeController extends Controller
 
         $theme->save();
 
+        // Notificación
+        $type = 'SiteTheme';
+        $by = Auth::user();
+        $data = 'agregó un nuevo tema "' . $theme->name . '" a tu plataforma.';
+        $model_action = "create";
+        $model_id = $theme->id;
+
+        $this->notification->send($type, $by ,$data, $model_action, $model_id);
+
         //Session message
         Session::flash('success', 'Guardado exitoso, la nueva apariencia quedó activa y las demás se desactivaron.');
 

@@ -20,7 +20,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 /* Notificaciones */
-use Nowyouwerkn\WerknHub\Controllers\NotificationController;
+use Nowyouwerkn\WerknHub\Services\NotificationService;
 
 /* Facebook Events API Conversion */
 use Nowyouwerkn\WerknHub\Services\FacebookEvents;
@@ -35,7 +35,7 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        $this->notification = new NotificationController;
+        $this->notification = new NotificationService;
         $this->theme = new SiteTheme;
     }
     
@@ -44,9 +44,9 @@ class FrontController extends Controller
         return view('front.theme.' . $this->theme->get_name() . '.index');
     }
 
-    public function legalText($type)
+    public function legalText($slug)
     {
-        $text = LegalText::where('type', $type)->first();
+        $text = LegalText::where('slug', $slug)->first();
 
         return view('front.theme.' . $this->theme->get_name() . '.legal')->with('text', $text);
     }

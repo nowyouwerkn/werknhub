@@ -13,27 +13,7 @@
     <div class="container">
     	<div class="row special-title text-center">
             <span class="text-background">Información Legal</span>
-                <h1>@switch($text->type)
-                        @case('Returns')
-                            Cambios y Devoluciones
-                            @break
-
-                        @case('Privacy')
-                            Aviso de Privacidad
-                            @break
-
-                        @case('Terms')
-                            Términos de Uso
-                            @break
-
-                        @case('Shipment')
-                            Envíos y Entregas
-                            @break
-
-                        @default
-                            ...
-                    @endswitch
-                </h1>
+                <h1>{{ $text->title }}</h1>
         </div>
 
     </div>

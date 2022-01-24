@@ -19,14 +19,11 @@ class UserController extends Controller
 
     public function index()
     {
-        //$users = User::all();
-
         $webmaster = User::role('webmaster')->get();
         $admin  = User::role('admin')->get();
         $analyst  = User::role('analyst')->get();
 
         $users = $webmaster->merge($admin->merge($analyst));
-
         $roles = Role::where('name', '!=', 'customer')->get();
 
         return view('werknhub::back.users.index')->with('users', $users)->with('roles', $roles);
@@ -58,6 +55,15 @@ class UserController extends Controller
 
         // Asignar el Rol
         $admin->assignRole($rol->name);
+
+        // Notificación
+        $type = 'User';
+        $by = Auth::user();
+        $data = 'agregó un nuevo usuario "' . $admin->name . '" a tu plataforma.';
+        $model_action = "create";
+        $model_id = $admin->id;
+
+        $this->notification->send($type, $by ,$data, $model_action, $model_id);
 
         return redirect()->back();
     }
@@ -96,6 +102,15 @@ class UserController extends Controller
                     return redirect()->back();
                 }
             }
+
+            // Notificación
+            $type = 'User';
+            $by = Auth::user();
+            $data = 'se elimino el usuario "' . $user->name . '" de tu plataforma.';
+            $model_action = "destroy";
+            $model_id = $user->id;
+
+            $this->notification->send($type, $by ,$data, $model_action, $model_id);
 
             $user->delete();
 

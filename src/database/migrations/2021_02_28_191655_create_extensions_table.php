@@ -13,7 +13,7 @@ class CreateExtensionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('extensions', function (Blueprint $table) {
+        Schema::create('wk_extensions', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
@@ -32,6 +32,6 @@ class CreateExtensionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('extensions');
+        Schema::dropIfExists('wk_extensions');
     }
 }

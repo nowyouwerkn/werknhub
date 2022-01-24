@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
+    protected $table = 'wk_states';
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
     
     use HasFactory;

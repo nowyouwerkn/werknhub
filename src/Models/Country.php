@@ -9,6 +9,9 @@ class Country extends Model
 {
     use HasFactory;
 
+    protected $table = 'wk_countries';
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 
     public function config()

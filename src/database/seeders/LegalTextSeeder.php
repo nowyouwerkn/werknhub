@@ -15,20 +15,18 @@ class LegalTextSeeder extends Seeder
     public function run()
     {
         LegalText::create([
-            'type' => 'Returns',
+            'title' => 'Política de Devoluciones',
+            'slug' => 'politica-de-devoluciones',
         ]);
 
         LegalText::create([
-            'type' => 'Privacy',
+            'title' => 'Aviso de Privacidad',
+            'slug' => 'aviso-de-privacidad',
         ]);
 
         LegalText::create([
-            'type' => 'Terms',
+            'title' => 'Términos y Condiciones',
+            'slug' => 'terminos-y-condiciones',
         ]);
-
-        LegalText::create([
-            'type' => 'Shipment',
-        ]);
-
     }
 }

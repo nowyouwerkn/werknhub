@@ -13,7 +13,7 @@ class CreateSiteConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('site_configs', function (Blueprint $table) {
+        Schema::create('wk_site_configs', function (Blueprint $table) {
             $table->id();
 
             // Store Config
@@ -56,6 +56,6 @@ class CreateSiteConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('site_configs');
+        Schema::dropIfExists('wk_site_configs');
     }
 }

@@ -13,11 +13,13 @@ class CreateLegalTextsTable extends Migration
      */
     public function up()
     {
-        Schema::create('legal_texts', function (Blueprint $table) {
+        Schema::create('wk_legal_texts', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('type', ['Returns', 'Privacy', 'Terms', 'Shipment']);
+            $table->string('title');
+            $table->string('slug')->nullable();
             $table->longText('description')->nullable();
+            $table->double('priority')->default(1);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateLegalTextsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('legal_texts');
+        Schema::dropIfExists('wk_legal_texts');
     }
 }

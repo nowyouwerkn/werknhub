@@ -7,10 +7,14 @@ Route::get('/', [
     'as' => 'index',
 ]);
 
-Route::get('legals/{type}', 'Nowyouwerkn\WerknHub\Controllers\FrontController@legalText')->name('legal.text');
+Route::get('/informacion-legal/{slug}', [
+    'uses' => 'Nowyouwerkn\WerknHub\Controllers\FrontController@legalText',
+    'as' => 'legal.text',
+])->where('slug', '[\w\d\-\_]+');
+
 
 // Back-End Views
-Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']], function(){
+Route::group(['prefix' => 'hub', 'middleware' => ['web', 'can:admin_access']], function(){
     //Dashboard
     Route::get('/', 'Nowyouwerkn\WerknHub\Controllers\DashboardController@index')->name('dashboard'); //
     Route::get('/change-color', [
@@ -45,7 +49,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']],
     Route::get('user/config', 'Nowyouwerkn\WerknHub\Controllers\UserController@config')->name('user.config');  //
     Route::get('user/help', 'Nowyouwerkn\WerknHub\Controllers\UserController@help')->name('user.help');  //
 
+    Route::resource('banners', 'Nowyouwerkn\WerknHub\Controllers\BannerController');
 
+    Route::post('/banners/status/{id}', [
+        'uses' => 'Nowyouwerkn\WerknHub\Controllers\BannerController@status',
+        'as' => 'banners.status',
+    ]);
+
+    Route::resource('popups', Nowyouwerkn\WerknHub\Controllers\PopUpController::class);
+
+    Route::post('/popups/status/{id}', [
+        'uses' => 'Nowyouwerkn\WerknHub\Controllers\PopupController@status',
+        'as' => 'popups.status',
+    ]);
+
+    Route::resource('band', Nowyouwerkn\WerknHub\Controllers\HeaderbandController::class);
+       Route::post('/band/status/{id}', [
+        'uses' => 'Nowyouwerkn\WerknHub\Controllers\HeaderbandController@status',
+        'as' => 'band.status',
+    ]);
+
+    Route::resource('mail', Nowyouwerkn\WerknHub\Controllers\MailConfigController::class)->except(['show, create, index']);
     Route::resource('notifications', Nowyouwerkn\WerknHub\Controllers\NotificationController::class)->except(['show']); //
 
     Route::get('/notifications/all',[
@@ -57,7 +81,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']],
         'uses' => 'Nowyouwerkn\WerknHub\Controllers\NotificationController@markAsRead',
         'as' => 'notifications.mark.read',
     ]);
-
 
     //Country
     //Route::resource('countries', Nowyouwerkn\WerknHub\Controllers\CountryController::class); 
@@ -84,7 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'can:admin_access']],
     ]);
 
     // Sección Soporte
-    Route::get('support', 'Nowyouwerkn\WerknHub\Controllers\DashboardController@shipping')->name('support.help');
+    Route::get('support', 'Nowyouwerkn\WerknHub\Controllers\DashboardController@support')->name('support.help');
 
     // Búsqueda
     Route::get('/busqueda-general', [

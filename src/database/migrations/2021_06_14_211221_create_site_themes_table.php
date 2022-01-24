@@ -13,7 +13,7 @@ class CreateSiteThemesTable extends Migration
      */
     public function up()
     {
-        Schema::create('site_themes', function (Blueprint $table) {
+        Schema::create('wk_site_themes', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
@@ -34,6 +34,6 @@ class CreateSiteThemesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('site_themes');
+        Schema::dropIfExists('wk_site_themes');
     }
 }

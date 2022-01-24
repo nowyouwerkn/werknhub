@@ -14,7 +14,7 @@ use Nowyouwerkn\WerknHub\Models\Integration;
 use Nowyouwerkn\WerknHub\Models\SiteConfig;
 
 /* Notificaciones */
-use Nowyouwerkn\WerknHub\Controllers\NotificationController;
+use Nowyouwerkn\WerknHub\Services\NotificationService;
 
 use Illuminate\Http\Request;
 
@@ -24,7 +24,7 @@ class IntegrationController extends Controller
 
     public function __construct()
     {
-        $this->notification = new NotificationController;
+        $this->notification = new NotificationService;
     }
     
     public function index()
@@ -70,6 +70,15 @@ class IntegrationController extends Controller
             'is_active' => true
         ]);
 
+        // Notificación
+        $type = 'Integration';
+        $by = Auth::user();
+        $data = 'creó la integración "' . $config->name . '" en la página web.';
+        $model_action = "create";
+        $model_id = $config->id;
+
+        $this->notification->send($type, $by ,$data, $model_action, $model_id);
+
         //Session message
         Session::flash('success', 'Guardado exitoso, se integró correctamente en tu sitio web.');
 
@@ -96,11 +105,13 @@ class IntegrationController extends Controller
         $config = Integration::find($id);
 
         // Notificación
-        $type = 'delete';
+        $type = 'Integration';
         $by = Auth::user();
         $data = 'eliminó la integración "' . $config->name . '" de la página web.';
+        $model_action = "destroy";
+        $model_id = $config->id;
 
-        $this->notification->send($type, $by ,$data);
+        $this->notification->send($type, $by ,$data, $model_action, $model_id);
 
         //
         $config->delete();

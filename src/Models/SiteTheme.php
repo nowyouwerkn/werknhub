@@ -9,6 +9,9 @@ class SiteTheme extends Model
 {
     use HasFactory;
 
+    protected $table = 'wk_site_themes';
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 
     public function get_name()

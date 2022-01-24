@@ -9,10 +9,15 @@ class Notification extends Model
 {
     use HasFactory;
 
+    protected $table = 'wk_notifications';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'action_by',
         'type',
         'data',
+        'model_action',
+        'model_id',
         'read_at',
         'is_hidden'
     ];
