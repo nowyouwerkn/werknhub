@@ -7,6 +7,7 @@
 @push('stylesheets')
 
 @endpush
+
 @section('content')
     <!-- Profile -->
     <section>

@@ -35,6 +35,8 @@ class FrontController extends Controller
 
     public function __construct()
     {
+        $this->middleware('web');
+
         $this->notification = new NotificationService;
         $this->theme = new SiteTheme;
     }

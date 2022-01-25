@@ -5,17 +5,7 @@
 @endpush
 
 @push('stylesheets')
-<style type="text/css">
-    .bg-warning{
-        background-color: rgba(212,205,191,1) !important;
-        color: #6a6340 !important;
-    }
 
-    .bg-danger{
-        background-color: rgba(10,18,33,1) !important;
-        color: #d7cfc0 !important;
-    }
-</style>
 @endpush
 
 @section('content')

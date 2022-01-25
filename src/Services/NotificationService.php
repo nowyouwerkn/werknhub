@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Request;
 
-use Nowyouwerkn\WeCommerce\Models\Notification;
+use Nowyouwerkn\WerknHub\Models\Notification;
 
 class NotificationService
 {   

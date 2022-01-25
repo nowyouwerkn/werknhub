@@ -3,6 +3,7 @@
 namespace Nowyouwerkn\WerknHub\Controllers;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Storage;
 use Session;
 use Str;
@@ -14,8 +15,17 @@ use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
+/* Notificaciones */
+use Nowyouwerkn\WerknHub\Services\NotificationService;
+
 class ExtensionController extends Controller
 {
+    private $notification;
+
+    public function __construct()
+    {
+        $this->notification = new NotificationService;
+    }
 
     public function index()
     {

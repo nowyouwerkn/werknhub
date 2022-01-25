@@ -12,7 +12,6 @@ Route::get('/informacion-legal/{slug}', [
     'as' => 'legal.text',
 ])->where('slug', '[\w\d\-\_]+');
 
-
 // Back-End Views
 Route::group(['prefix' => 'hub', 'middleware' => ['web', 'can:admin_access']], function(){
     //Dashboard

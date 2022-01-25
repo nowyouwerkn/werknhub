@@ -75,7 +75,7 @@
             <div class="row">
                 @foreach($extensions as $extension)
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card mb-4">
                         @if($extension->is_active == false)
                         <span class="badge badge-danger">Desactivado</span>
                         @else

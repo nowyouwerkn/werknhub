@@ -28,28 +28,39 @@
     </div>
   </div>
 
-  @if($popup->show_on_enter == true)
-  <script type="text/javascript">
-    if (document.cookie.indexOf('modal_shown=') >= 0) {
-    }
-    else {
-      $('#wkPopupModal').modal('show'); 
-      document.cookie = 'modal_shown=seen';
-    }
-  </script>
-  @endif
+  @push('scripts')
+    @if($popup->show_on_enter == true)
+    <script type="text/javascript">
+      if (document.cookie.indexOf('modal=modal_shown') >= 0) {
 
-  @if($popup->show_on_exit == true)
-  <script type="text/javascript">
-    if (document.cookie.indexOf('modal_shown=') >= 0) {
-    }
-    else {
-      $("html").bind("mouseleave", function () {
-        $('#wkPopupModal').modal('show');
-        $("html").unbind("mouseleave");
-      });
-      document.cookie = 'modal_shown=seen';
-    }
-  </script>
-  @endif
+      }else {
+        var wkPopupModal = new bootstrap.Modal(document.getElementById('wkPopupModal'), {
+          keyboard: false
+        });
+
+        wkPopupModal.show();
+        document.cookie = ('modal=modal_shown');
+      }
+    </script>
+    @endif
+
+    @if($popup->show_on_exit == true)
+    <script type="text/javascript">
+      if (document.cookie.indexOf('modal=modal_shown') >= 0) {
+
+      }else{
+        $("html").bind("mouseleave", function () {
+          var wkPopupModal = new bootstrap.Modal(document.getElementById('wkPopupModal'), {
+            keyboard: false
+          });
+
+          wkPopupModal.show();
+          $("html").unbind("mouseleave");
+        });
+
+        document.cookie = ('modal=modal_shown');
+      }
+    </script>
+    @endif
+  @endpush
 @endif

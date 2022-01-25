@@ -67,11 +67,12 @@
 
 @push('scripts')
 <script type="text/javascript">
-    if (document.cookie.indexOf('cookie_notice_accepted') >= 0) {
+    if (document.cookie.indexOf('cookie=notice_accepted') >= 0) {
       $('.overlay-cookie').removeClass('show-cookie');
     }else {
       $('.close-cookie').on("click", function() {
-          document.cookie = 'cookie_notice_accepted';  
+          document.cookie = ('cookie=notice_accepted');  
+
           $('.overlay-cookie').removeClass('show-cookie'); 
       });
     }

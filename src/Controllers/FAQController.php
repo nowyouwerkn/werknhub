@@ -3,6 +3,7 @@
 namespace Nowyouwerkn\WerknHub\Controllers;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Carbon\Carbon;
 
 use Session;
