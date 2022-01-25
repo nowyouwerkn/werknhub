@@ -30,7 +30,7 @@ class BannerController extends Controller
     {
         //Validar
         $this -> validate($request, array(
-            'title' => 'unique:banners|required|max:255',
+            'title' => 'unique:wk_banners|required|max:255',
             'subtitle' => 'nullable',
             'text_button' => 'required',
             'link' => 'nullable',

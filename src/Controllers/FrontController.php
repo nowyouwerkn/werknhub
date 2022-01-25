@@ -3,15 +3,15 @@
 namespace Nowyouwerkn\WerknHub\Controllers;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use View;
 use Session;
-use Auth;
 use Carbon\Carbon;
 
-/* E-commerce Models */
 use Config;
 use Mail;
 
+use Nowyouwerkn\WerknHub\Models\Banner;
 use Nowyouwerkn\WerknHub\Models\SiteTheme;
 use Nowyouwerkn\WerknHub\Models\LegalText;
 
@@ -40,8 +40,11 @@ class FrontController extends Controller
     }
     
     public function index ()
-    {
-        return view('front.theme.' . $this->theme->get_name() . '.index');
+    {   
+        $banners = Banner::where('is_active', true)->get();
+
+        return view('front.theme.' . $this->theme->get_name() . '.index')
+        ->with('banners', $banners);
     }
 
     public function legalText($slug)
@@ -49,5 +52,39 @@ class FrontController extends Controller
         $text = LegalText::where('slug', $slug)->first();
 
         return view('front.theme.' . $this->theme->get_name() . '.legal')->with('text', $text);
+    }
+
+    /*
+    * Información de Usuario
+    * Estas son las vistas del perfil de cliente
+    */
+    public function profile ()
+    {
+        return view('front.theme.' . $this->theme->get_name() . '.auth.profile.main');
+    }
+
+    public function account ()
+    {
+        $user = Auth::user();
+        return view('front.theme.' . $this->theme->get_name() . '.auth.profile.account')->with('user', $user);
+    }
+
+    public function updateAccount(Request $request, $id)
+    {
+        // Validar los datos
+        $this -> validate($request, array(
+
+        ));
+
+        $user = User::find($id);
+
+        $user->name = $request->input('name');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        // Mensaje de aviso server-side
+        Session::flash('success', 'Tu cuenta se actualizó exitosamente.');
+
+        return redirect()->route('profile');
     }
 }

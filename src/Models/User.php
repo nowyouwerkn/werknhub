@@ -41,42 +41,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
-
-    public function addresses()
-    {
-        return $this->hasMany(UserAddress::class);
-    }
-
-    public function wishlists()
-    {
-        return $this->hasMany(Wishlist::class, 'user_id', 'id');
-    }
-
-    public function coupons()
-    {
-        return $this->belongsToMany(Coupon::class, 'user_coupons', 'user_id', 'coupon_id');
-    }
-
-    public function isInWishlist($productId)
-    {
-        $wishList = Wishlist::where('user_id', '=', $this->attributes['id'])
-            ->where('product_id', '=', $productId)->get();
-
-
-        if (count($wishList) <= 0) {
-            return false;
-        }
-
-        return true;
-    }
 }

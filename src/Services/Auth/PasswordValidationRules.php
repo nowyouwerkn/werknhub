@@ -1,6 +1,6 @@
 <?php
 
-namespace Nowyouwerkn\WeCommerce\Services\Auth;
+namespace Nowyouwerkn\WerknHub\Services\Auth;
 
 use Laravel\Fortify\Rules\Password;
 

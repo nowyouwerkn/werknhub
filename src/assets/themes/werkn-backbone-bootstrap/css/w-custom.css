@@ -1,0 +1,120 @@
+/*
+  Theme Name: Werkn Backbone
+  Support: hey@werkn.mx
+  Description: Werkn Backbone
+  Version: 1.0
+*/
+
+/* Your CSS Styles Here
+-----------------------------------*/
+
+/* WERKN ADMIN BAR */
+.werkn-admin-bar{
+    direction: ltr;
+    color: #c3c4c7;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 2.46153846;
+    height: 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 600px;
+    z-index: 99999;
+    background: #1d2327;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.werkn-admin-bar ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 0px;
+}
+
+.werkn-admin-bar ul li{
+    padding: 5px 15px;
+}
+
+.sticky-menu{
+    top: 30px !important;
+}
+
+/* BANNER */
+.banner-main{
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content{
+  position: relative;
+  z-index: 2;
+
+  padding: 200px 0px;
+}
+
+.banner-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.banner-img img{
+  width: 100%;
+}
+
+/* POP-UP */
+.wk-popup-modal .modal-body{
+
+}
+
+.wk-popup-modal .modal-dialog{
+  margin-top: 6em;
+}
+
+.wk-popup-modal .btn-close{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  z-index: 2;
+  width: 45px;
+  height: 45px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 100%;
+  line-height: 45px;
+}
+
+.wk-popup-modal .modal-body{
+  padding: 0px;
+  position: relative;
+  display: flex;
+}
+
+.wk-modal-image{
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 350px;
+}
+
+.wk-modal-image img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 150%;
+  transform: translate(-50%,-50%);
+}
+
+.wk-info-wrap{
+  width: 60%;
+  padding: 30px 40px;
+}

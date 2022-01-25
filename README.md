@@ -79,6 +79,12 @@ Es necesario agregar proveedores al proyecto para poder utilizar todas las funci
 'providers' => [
     // ...
     Nowyouwerkn\WeCommerce\WerknHubServiceProvider::class,
+    Intervention\Image\ImageServiceProvider::class,
+];
+
+'aliases' => [
+    // ...
+    'Image' => Intervention\Image\Facades\Image::class
 ];
 ```
 

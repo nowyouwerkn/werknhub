@@ -6,12 +6,12 @@ use Nowyouwerkn\WerknHub\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravel\Fortify\Contracts\ResetsUserPasswords;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class CreateNewUser implements CreatesNewUsers
+class ChagngePassword implements ResetsUserPasswords
 {
     use PasswordValidationRules;
 
@@ -21,28 +21,14 @@ class CreateNewUser implements CreatesNewUsers
      * @param  array  $input
      * @return \Nowyouwerkn\WerknHub\Models\User
      */
-    public function create(array $input)
+    public function reset($user, array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
             'password' => $this->passwordRules(),
         ])->validate();
 
-        $user = User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
+        $user->forceFill([
             'password' => Hash::make($input['password']),
-        ]);
-
-        $user->assignRole('customer');
-
-        return $user;
+        ])->save();
     }
 }

@@ -20,6 +20,7 @@ use Nowyouwerkn\WerknHub\Models\PopUp;
 /* Fortify Auth */
 use Laravel\Fortify\Fortify;
 use Nowyouwerkn\WerknHub\Services\Auth\CreateNewUser as NewUser;
+use Nowyouwerkn\WerknHub\Responses\LoginResponse;
 
 class WerknHubServiceProvider extends ServiceProvider
 {
@@ -58,12 +59,23 @@ class WerknHubServiceProvider extends ServiceProvider
         Fortify::createUsersUsing(NewUser::class);
 
         Fortify::loginView(function () {
-            return view('front.theme.' . $this->theme->get_name() . '.auth');
+            return view('front.theme.' . $this->theme->get_name() . '.auth.auth');
         });
 
         Fortify::registerView(function () {
-            return view('front.theme.' . $this->theme->get_name() . '.auth');
+            return view('front.theme.' . $this->theme->get_name() . '.auth.auth');
         });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('front.theme.' . $this->theme->get_name() . '.auth.password_forget');
+        });
+
+         Fortify::resetPasswordView(function () {
+            return view('front.theme.' . $this->theme->get_name() . '.auth.password_reset', ['request' => $request]);
+        });
+
+        // Redirección personalizada en Fortify
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
 
         // Configuración básica de funcionalidad del sistema
         $this->loadRoutesFrom(__DIR__.'/routes.php');

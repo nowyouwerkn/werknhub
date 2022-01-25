@@ -114,5 +114,15 @@ Route::group(['prefix' => 'hub', 'middleware' => ['web', 'can:admin_access']], f
         'uses' => 'Nowyouwerkn\WerknHub\Controllers\DashboardController@generalSearch',
         'as' => 'back.search.query',
     ]);
+});
 
+//Profile
+Route::group(['prefix' => 'profile', 'middleware' => 'web', 'can:customer_access'], function(){
+    Route::get('/', 'Nowyouwerkn\WerknHub\Controllers\FrontController@profile')->name('profile');
+    Route::get('account', 'Nowyouwerkn\WerknHub\Controllers\FrontController@account')->name('account');
+
+    Route::put('/account/{id}', [
+        'uses' => 'Nowyouwerkn\WerknHub\Controllers\FrontController@updateAccount',
+        'as' => 'profile.update',
+    ]);
 });
