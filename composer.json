@@ -27,7 +27,7 @@
         "spatie/laravel-permission": "^4.2",
         "intervention/image": "^2.6",
         "stevebauman/location": "^6.1",
-        "mews/purifier": "^3.3",
+        "mews/purifier": "^3.3"
     },
     "require-dev": {
     },
