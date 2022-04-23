@@ -10,12 +10,14 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator; 
 use Illuminate\Pagination\LengthAwarePaginator;
 
+/*
 use Nowyouwerkn\WerknHub\Models\SiteTheme;
 use Nowyouwerkn\WerknHub\Models\SiteConfig;
 use Nowyouwerkn\WerknHub\Models\LegalText;
 use Nowyouwerkn\WerknHub\Models\Integration;
 use Nowyouwerkn\WerknHub\Models\Extension;
 use Nowyouwerkn\WerknHub\Models\PopUp;
+*/
 
 /* Fortify Auth */
 use Laravel\Fortify\Fortify;
@@ -119,6 +121,7 @@ class WerknHubServiceProvider extends ServiceProvider
 
 
         // Variables globales WerknHub
+        /*
         $site_config = SiteConfig::first(['site_name', 'contact_email', 'phone']);
         $legals = LegalText::get(['title', 'slug']);
         $integrations = Integration::where('is_active', true)->get(['name', 'code']);
@@ -132,5 +135,6 @@ class WerknHubServiceProvider extends ServiceProvider
         View::share('extensions', $extensions);
         View::share('theme', $theme);
         View::share('popup', $popup);
+        */
     }
 }

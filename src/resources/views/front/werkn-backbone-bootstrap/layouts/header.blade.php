@@ -1,3 +1,8 @@
+@php
+    $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first(['site_name', 'contact_email', 'phone']);
+    $extensions = Nowyouwerkn\WerknHub\Models\Extension::where('is_active', true)->get(['name']);
+@endphp
+
 <nav class="pt-3 pb-3">
     <div class="container">
         <div class="row justify-content-between align-items-center">
@@ -27,11 +32,11 @@
             </div>
             <div class="col-2">
                 <a href="{{ route('index') }}">
-                    @if(!empty($store_config))
-                        @if($store_config->store_logo == NULL)
+                    @if(!empty($site_config))
+                        @if($site_config->store_logo == NULL)
                         <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="img-fluid" width="200">
                         @else
-                        <img src="{{ asset('assets/img/' . $store_config->store_logo) }}" alt="Logo" class="img-fluid" width="200">
+                        <img src="{{ asset('assets/img/' . $site_config->store_logo) }}" alt="Logo" class="img-fluid" width="200">
                         @endif
                     @else
                     <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" class="img-fluid" width="200">
