@@ -1,3 +1,7 @@
+@php
+    $extensions = Nowyouwerkn\WerknHub\Models\Extensions::where('is_active', true)->get(['name']);
+@endphp
+                
 <aside class="aside aside-fixed">
     <div class="aside-header">
         <a href="{{ route('index') }}" class="aside-logo">We<span></span>rkn</a>

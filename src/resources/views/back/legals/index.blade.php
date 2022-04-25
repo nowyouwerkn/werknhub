@@ -61,24 +61,22 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h4 class="mb-3">
-                        <input type="text" name="title" value="{{ $legal->title }}" required="" />
-                        Prioridad    
-                        <select class="form-group" name="priority">
-                              <option value="{{ $legal->priority }}">{{ $legal->priority }}</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                        </select>
+                            <input type="text" name="title" value="{{ $legal->title }}" required="" />
+                            Prioridad    
+                            <select class="form-group" name="priority">
+                                <option value="{{ $legal->priority }}">{{ $legal->priority }}</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
                         </h4>
 
-                    
-                            <input type="hidden" name="type" value="{{ $legal->type }}">
-                            <!--<textarea name="description" id="" class="form-control" cols="30" rows="10">{!! $legal->description ?? '' !!}</textarea>-->
-
+                        <input type="hidden" name="type" value="{{ $legal->type }}">
+                        <!--<textarea name="description" id="" class="form-control" cols="30" rows="10">{!! $legal->description ?? '' !!}</textarea>-->
 
                         <div id="editor-container-{{ $legal->id }}" class="ht-350 mb-4">
                             {!! $legal->description ?? '' !!}

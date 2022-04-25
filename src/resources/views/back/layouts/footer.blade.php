@@ -1,1 +1,1 @@
-<h2>Todos los derechos reservados. 2021 &copy; Werkn S.A de C.V // Página cargada en {{ (microtime(true) - LARAVEL_START) }} segundos.</h2>
+<h2>Todos los derechos reservados. 2022 &copy; Werkn S.A de C.V // Página cargada en {{ (microtime(true) - LARAVEL_START) }} segundos.</h2>

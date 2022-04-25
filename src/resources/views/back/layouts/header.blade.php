@@ -8,7 +8,6 @@
         <div class="dropdown dropdown-notification ml-3">
             @php
                 $notifications = Nowyouwerkn\WerknHub\Models\Notification::with('user')->where('read_at', NULL)->orderBy('created_at', 'desc')->take(5)->get();
-
                 $notifications_all = Nowyouwerkn\WerknHub\Models\Notification::with('user')->where('read_at', NULL)->orderBy('created_at', 'desc')->count();
             @endphp
           <a href="javascript:void(0)" class="dropdown-link new-indicator" data-toggle="dropdown">
