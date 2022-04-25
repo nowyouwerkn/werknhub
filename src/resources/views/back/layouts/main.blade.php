@@ -59,6 +59,10 @@
         }
     </style>
 
+    @php
+        $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first();
+    @endphp
+
     @if($site_config->site_logo == NULL)
         <style type="text/css">
             .aside-logo {
