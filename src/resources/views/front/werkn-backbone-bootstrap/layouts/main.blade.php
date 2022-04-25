@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="es">
     <head>
+        @php
+            $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first(['site_name', 'contact_email', 'phone']);
+            $integrations = Nowyouwerkn\WerknHub\Models\Integration::where('is_active', true)->get(['name', 'code']);
+        @endphp
+
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{{ $site_config->site_name ?? 'WerknHub' }}</title>
@@ -46,6 +51,7 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     	@stack('scripts')
+
 
         @foreach($integrations as $integration)
             <!-- {{ $integration->name }} -->

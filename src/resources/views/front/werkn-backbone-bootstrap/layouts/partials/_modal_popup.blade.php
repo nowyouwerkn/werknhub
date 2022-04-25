@@ -1,3 +1,7 @@
+@php
+  $popup = Nowyouwerkn\WerknHub\Models\PopUp::where('is_active', true)->first();
+@endphp
+
 @if(!empty($popup))
   <div class="modal fade wk-popup-modal" id="wkPopupModal" tabindex="-1" aria-labelledby="wkPopupModalLabel" aria-hidden="true">
     <div class="modal-dialog">

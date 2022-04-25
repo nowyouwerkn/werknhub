@@ -1,3 +1,9 @@
+@php
+    $site_config = Nowyouwerkn\WerknHub\Models\SiteConfig::first(['site_name', 'contact_email', 'phone']);
+    $legals = Nowyouwerkn\WerknHub\Models\LegalText::get(['title', 'slug']);
+    $extensions = Nowyouwerkn\WerknHub\Models\Extension::where('is_active', true)->get(['name']);
+@endphp
+
 <footer class="bg-dark text-white pt-5 pb-5">
     <div class="container">
         <div class="row">
