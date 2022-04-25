@@ -9,6 +9,10 @@
 @endpush
 
 @section('content')
+@php
+    $legals = Nowyouwerkn\WerknHub\Models\LegalText::get(['title', 'slug']);
+@endphp
+
     <!-- Auth -->
     <section class="mt-5 pt-5 mb-5 pb-5">
         <div class="container">
