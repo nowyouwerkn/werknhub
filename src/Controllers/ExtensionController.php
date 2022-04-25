@@ -25,6 +25,8 @@ class ExtensionController extends Controller
     public function __construct()
     {
         $this->notification = new NotificationService;
+        $this->middleware('web');
+        
     }
 
     public function index()

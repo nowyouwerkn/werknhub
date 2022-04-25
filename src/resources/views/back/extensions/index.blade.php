@@ -126,8 +126,8 @@
                     </div>
 
                     <div class="form-group mt-2">
-                        <label>Comando <span class="text-info">(Opcional)</span></label>
-                        <input type="text" class="form-control" name="composer_require" placeholder="composer require nowyouwerkn/wecommerce">
+                        <label>Comando <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="composer_require" placeholder="composer require nowyouwerkn/wecommerce" required="">
                     </div>
 
                     <div class="alert alert-warning">
