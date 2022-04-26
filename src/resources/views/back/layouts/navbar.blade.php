@@ -1,5 +1,5 @@
 @php
-    $extensions = Nowyouwerkn\WerknHub\Models\Extensions::where('is_active', true)->get(['name']);
+    $extensions = Nowyouwerkn\WerknHub\Models\Extension::where('is_active', true)->get(['name']);
 @endphp
                 
 <aside class="aside aside-fixed">
